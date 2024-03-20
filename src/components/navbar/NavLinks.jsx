@@ -20,8 +20,8 @@ const NavLinks = () => {
           key={link.title}
           className={`rounded-full px-3 py-1 ${
             link.path == pathname
-              ? "bg-[var(--foreground-color)] text-[var(--background-start-color)]"
-              : "text-[var(--foreground-color)] bg-[var(--background-start-color)]"
+              ? "bg-foreground text-background"
+              : "text-foreground bg-background"
           }`}
         >
           {link.title}
