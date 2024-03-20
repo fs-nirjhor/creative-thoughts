@@ -56,13 +56,13 @@ const NavLinks = () => {
       {/* mobile display nav */}
       <div className="absolute top-3 right-0 flex xl:hidden flex-col justify-center gap-3">
         <button
-          className="rounded-md px-2 py-1"
+          className="rounded-md px-2 py-1 h-10 w-10 ms-auto"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <Image src={menu} alt="menu" className="h-5 w-6 ms-auto" />
+          <Image src={menu} alt="menu" className="" />
         </button>
         {isOpen && (
-          <nav className="min-h-[calc(100vh-4rem)] py-5 px-20 flex flex-col items-center gap-3 bg-secondary-background rounded">
+          <nav className="min-h-[calc(100vh-4rem)] py-5 px-20 flex flex-col items-center gap-3 bg-secondary-background bg-opacity-50 rounded">
             {links.map((link) => (
               <Link
                 href={link.path}

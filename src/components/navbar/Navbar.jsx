@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <header className="relative flex justify-between gap-5 py-3">
+    <header className="relative flex justify-between gap-5 py-3 mb-3">
       <Link href="/" className="text-xl font-bold">
         FSN
       </Link>
