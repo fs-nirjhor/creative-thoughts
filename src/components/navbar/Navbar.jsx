@@ -1,9 +1,10 @@
-import Links from "@/components/navbar/Links";
+import NavLinks from "@/components/navbar/NavLinks";
 
 const Navbar = () => {
   return (
-    <header>
-      <Links />
+    <header className="flex items-center justify-between h-12">
+      <div className="text-xl font-bold">FSN</div>
+      <NavLinks />
     </header>
   );
 };
