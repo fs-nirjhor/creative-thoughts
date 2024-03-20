@@ -10,15 +10,27 @@ const NavLinks = () => {
     { title: "About", path: "/about" },
     { title: "Contact", path: "/contact" },
     { title: "Blog", path: "/blog" },
-    // { title: "Login", path: "/login" },
   ];
+  //! Temporary
+  const isSession = true;
+  const isAdmin = true;
+
+  if (isAdmin) {
+    links.push({ title: "Admin", path: "/admin" });
+  }
+  if (!isSession) {
+    links.push({ title: "Login", path: "/login" });
+  }
+  if (isSession) {
+    links.push({ title: "Logout", path: "/logout" });
+  }
   return (
     <nav className="flex justify-between items-center">
       {links.map((link) => (
         <Link
           href={link.path}
           key={link.title}
-          className={`rounded-full px-3 py-1 ${
+          className={`rounded-full px-2 py-1 ${
             link.path == pathname
               ? "bg-foreground text-background"
               : "text-foreground bg-background"
