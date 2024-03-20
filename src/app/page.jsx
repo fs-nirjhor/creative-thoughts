@@ -1,6 +1,7 @@
 import Image from "next/image";
 import hero from "@/../public/hero.gif";
 import brands from "@/../public/brands.png";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,20 @@ const HomePage = () => {
           velit, iste hic voluptate impedit esse tenetur soluta omnis mollitia
           perspiciatis.
         </p>
+        <div className="flex gap-5">
+          <Link
+            href="/learn-more"
+            className="px-3 py-2 rounded hover:opacity-50 bg-background"
+          >
+            Learn More
+          </Link>
+          <Link
+            href="/contact"
+            className="px-3 py-2 rounded hover:opacity-50 bg-white text-background"
+          >
+            Contact
+          </Link>
+        </div>
         <div className="grayscale">
           <Image src={brands} alt="brands" />
         </div>
