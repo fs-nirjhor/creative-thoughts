@@ -15,15 +15,15 @@ const AboutPage = () => {
         </p>
         <div className="flex justify-between">
           <div>
-            <h4 className="font-bold text-blue-700 text-lg">10 K+</h4>
+            <h4 className="font-bold text-blue-700 text-xl">10 K+</h4>
             <p className="text-sm">Year of experience</p>
           </div>
           <div>
-            <h4 className="font-bold text-blue-700 text-lg">274 K+</h4>
+            <h4 className="font-bold text-blue-700 text-xl">274 K+</h4>
             <p className="text-sm">People reached</p>
           </div>
           <div>
-            <h4 className="font-bold text-blue-700 text-lg">5 K+</h4>
+            <h4 className="font-bold text-blue-700 text-xl">5 K+</h4>
             <p className="text-sm">Services and plugins</p>
           </div>
         </div>
