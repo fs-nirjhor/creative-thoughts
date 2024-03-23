@@ -3,7 +3,7 @@ import about from "@/../public/about.png";
 
 const AboutPage = () => {
   return (
-    <section className="flex justify-between items-center gap-3">
+    <section className="flex justify-between items-center gap-5">
       <div>
         <h3 className="font-bold text-blue-700">About Company</h3>
         <h1 className="text-6xl font-bold my-5">Creative Thoughts Agency.</h1>
@@ -28,11 +28,9 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <Image
-        src={about}
-        alt="about"
-        className="w-1/2 hidden md:block rounded"
-      />
+      <div className="hidden lg:block rounded">
+        <Image src={about} alt="about" />
+      </div>
     </section>
   );
 };
