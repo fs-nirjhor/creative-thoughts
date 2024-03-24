@@ -1,6 +1,11 @@
 import Image from "next/image";
 import contact from "@/../public/contact.png";
 
+export const metadata = {
+  title: "Contact",
+  description: "Contact with creative thoughts agency",
+};
+
 const ContactPage = () => {
   const inputClass =
     "focus:border-2 border-foreground rounded bg-slate-800 p-2 w-full";

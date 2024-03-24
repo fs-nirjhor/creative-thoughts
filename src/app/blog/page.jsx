@@ -2,6 +2,11 @@ import Post from "@/components/post/Post";
 import { getPosts } from "@/lib/data";
 import { notFound } from "next/navigation";
 
+export const metadata = {
+  title: "Blog",
+  description: "Blog of creative thoughts agency",
+};
+
 const BlogPage = async () => {
   const posts = await getPosts();
   if (!posts) {

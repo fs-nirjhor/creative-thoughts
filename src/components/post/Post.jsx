@@ -6,7 +6,7 @@ const Post = ({ post }) => {
   return (
     <article className="rounded hover:border-2 hover:border-secondary-background p-2">
       <div className="flex aspect-square">
-        <div className="relative flex-grow bg-red-700">
+        <div className="relative flex-grow max-w-xs">
           <Image src={post.image} alt={post.title} className="rounded" fill />
         </div>
         <p className="-rotate-90 m-auto w-8 whitespace-nowrap text-end">

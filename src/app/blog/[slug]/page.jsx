@@ -11,7 +11,7 @@ const SingleBlogPage = async ({ params }) => {
   }
   return (
     <main className="flex flex-col lg:flex-row justify-between gap-5">
-      <section className="relative aspect-square flex-1">
+      <section className="relative aspect-square flex-1 max-w-sm">
         <Image src={post.image} alt={post.title} fill className="rounded" />
       </section>
       <section className="flex-1">

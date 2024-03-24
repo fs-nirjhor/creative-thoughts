@@ -1,6 +1,11 @@
 import Image from "next/image";
 import about from "@/../public/about.png";
 
+export const metadata = {
+  title: "About",
+  description: "About creative thoughts agency",
+};
+
 const AboutPage = () => {
   return (
     <section className="flex justify-between items-center gap-5">
