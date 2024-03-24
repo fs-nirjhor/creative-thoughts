@@ -1,11 +1,14 @@
 import Author from "@/components/author/Author";
 import { getPost } from "@/lib/data";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 const SingleBlogPage = async ({ params }) => {
   const post = await getPost(params.slug);
-
+  if (!post) {
+    notFound();
+  }
   return (
     <main className="flex flex-col lg:flex-row justify-between gap-5">
       <section className="relative aspect-square flex-1">

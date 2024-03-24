@@ -3,6 +3,9 @@ import Image from "next/image";
 
 const Author = async ({ post }) => {
   const user = await getUser(post.userId);
+  if (!user) {
+    return <div></div>;
+  }
   return (
     <section className="flex items-center gap-5 mb-3">
       <div className="relative w-10 h-10">
