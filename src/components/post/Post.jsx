@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Post = ({ post }) => {
-  const date = post.createdAt || "24 March 2024"; //!temporary
+  const date = post.createdAt.toString().slice(4, 16);
   return (
     <article className="rounded hover:border-2 hover:border-secondary-background p-2">
       <div className="flex aspect-square">
