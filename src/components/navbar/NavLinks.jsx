@@ -20,6 +20,7 @@ const NavLinks = () => {
     { title: "About", path: "/about" },
     { title: "Contact", path: "/contact" },
     { title: "Blog", path: "/blog" },
+    { title: "Test", path: "/test" }, //! temporary
   ];
   if (isAdmin) {
     links.push({ title: "Admin", path: "/admin" });
