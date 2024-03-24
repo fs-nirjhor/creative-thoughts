@@ -2,7 +2,7 @@ import { getUser } from "@/lib/data";
 import Image from "next/image";
 
 const Author = async ({ post }) => {
-  const user = await getUser(post.userId);
+  const user = await getUser(post.author);
   if (!user) {
     return <div></div>;
   }
