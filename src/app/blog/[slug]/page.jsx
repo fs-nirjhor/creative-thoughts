@@ -4,6 +4,17 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.slug);
+  if (!post) {
+    notFound();
+  }
+  return {
+    title: post.title,
+    description: post.description,
+  };
+}
+
 const SingleBlogPage = async ({ params }) => {
   const post = await getPost(params.slug);
   if (!post) {
