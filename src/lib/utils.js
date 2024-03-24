@@ -6,7 +6,7 @@ const connection = {};
 export const connectToDb = async () => {
   try {
     if (connection.isConnected) {
-      console.log("Useng existing connection");
+      return console.log("Using existing connection");
     }
     const db = await connect(mongoUri);
     connection.isConnected = db.connections[0].readyState;
