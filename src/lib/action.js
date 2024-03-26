@@ -3,22 +3,19 @@
 import { Post } from "@/lib/models";
 import { connectToDb } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
+import { baseUrl } from "@/lib/secret";
 
 // post action
 export const createPost = async (formData) => {
-  // "use server";
   try {
-    const { title, description, image, author, slug } =
-      Object.fromEntries(formData);
-    connectToDb();
-    const newPost = await Post.create({
-      title,
-      description,
-      image,
-      author,
-      slug,
+    const data = Object.fromEntries(formData);
+    const res = await fetch(`${baseUrl}/api/blog`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      cache: "no-store",
     });
-    // console.log(newPost);
+    //const newPost = res.json();
+    // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
     throw new Error(error);
@@ -27,10 +24,13 @@ export const createPost = async (formData) => {
 
 export const deletePost = async (formData) => {
   try {
-    const { id } = Object.fromEntries(formData);
-    connectToDb();
-    const deletedPost = await Post.findByIdAndDelete(id);
-    // console.log(deletedPost);
+    const data = Object.fromEntries(formData);
+    const res = await fetch(`${baseUrl}/api/blog`, {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      cache: "no-store",
+    });
+    // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
     throw new Error(error);

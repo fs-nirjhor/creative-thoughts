@@ -22,7 +22,7 @@ const Author = async ({ post }) => {
       </div>
       <div>
         <h5 className="text-gray-400 font-semibold">Published</h5>
-        <p>{post.createdAt.toString().slice(4, 16)}</p>
+        <p>{post.createdAt.toString().slice(0, 10)}</p>
       </div>
     </section>
   );
