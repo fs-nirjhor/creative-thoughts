@@ -17,7 +17,7 @@ const NavigationTest = () => {
           className={btnStyle}
           onClick={() => router.push("/test/subtest?search=abcd")}
         >
-          Push subt-test
+          Push sub-test
         </button>
         <button className={btnStyle} onClick={() => router.replace("/contact")}>
           Replace contact

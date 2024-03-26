@@ -29,7 +29,7 @@ const postSchema = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
-    image: { type: String, default: false },
+    image: { type: String, default: "" },
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
