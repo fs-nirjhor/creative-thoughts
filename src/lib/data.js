@@ -1,5 +1,6 @@
 import { connectToDb } from "@/lib/utils";
 import { Post, User } from "@/lib/models";
+import { baseUrl } from "@/lib/secret";
 //import { unstable_noStore as noStore } from "next/cache";
 
 export const getPosts = async () => {
@@ -12,13 +13,12 @@ export const getPosts = async () => {
     return posts; 
     */
     // fetch from API
-    const posts = await fetch("http://localhost:3000/api/blog", {
+    const posts = await fetch(`${baseUrl}/api/blog`, {
       next: { revalidate: 60 },
     });
     return posts.json();
   } catch (error) {
     console.log(error.message);
-    throw new Error(error);
   }
 };
 
@@ -31,21 +31,25 @@ export const getPost = async (slug) => {
     return post; 
     */
     // fetch from API
-    const post = await fetch(`http://localhost:3000/api/blog/${slug}`);
+    const post = await fetch(`${baseUrl}/api/blog/${slug}`);
     return post.json();
   } catch (error) {
     console.log(error.message);
-    throw new Error(error);
   }
 };
 
 export const getUser = async (id) => {
   try {
     connectToDb();
+    /* 
+    // fetch from database
     const user = await User.findById(id);
-    return user;
+    return user; 
+    */
+    // fetch from API
+    const user = await fetch(`${baseUrl}/api/user/${id}`);
+    return user.json();
   } catch (error) {
     console.log(error.message);
-    throw new Error(error);
   }
 };

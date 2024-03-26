@@ -17,7 +17,6 @@ export async function generateMetadata({ params }) {
 
 const SingleBlogPage = async ({ params }) => {
   const post = await getPost(params.slug);
-  console.log(post);
   if (!post) {
     notFound();
   }
