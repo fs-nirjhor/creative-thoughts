@@ -63,7 +63,7 @@ const NavLinks = () => {
           <Image src={menu} alt="menu" className="" />
         </button>
         {isOpen && (
-          <nav className="min-h-[calc(100vh-4rem)] py-5 px-20 flex flex-col items-center gap-3 bg-secondary-background bg-opacity-50 rounded">
+          <nav className="min-h-[calc(100vh-4rem)] py-5 px-20 flex flex-col justify-center items-center gap-3 bg-secondary-background bg-opacity-50 rounded">
             {links.map((link) => (
               <Link
                 href={link.path}

@@ -1,12 +1,14 @@
-import { postAction } from "@/lib/action";
+import { createPost, deletePost } from "@/lib/action";
 
 const ActionTest = () => {
   const style =
-    "p-2 w-full block mb-3 bg-gray-800 border-2 border-foreground rounded";
+    "px-2 w-full block mb-3 bg-gray-800 focus:bg-slate-700 border border-foreground rounded";
   return (
-    <section className="mt-5">
-      <h1 className="mb-3 text-center text-lg font-bold text-blue-500">Post</h1>
-      <form action={postAction} method="post">
+    <section className="mt-5 max-w-md mx-auto">
+      <h1 className="mb-3 text-center text-lg font-bold text-blue-500">
+        Create Post
+      </h1>
+      <form action={createPost} method="post">
         <input type="text" name="title" placeholder="Title" className={style} />
         <textarea
           name="description"
@@ -30,9 +32,22 @@ const ActionTest = () => {
         <input type="text" name="slug" placeholder="Slug" className={style} />
         <button
           type="submit"
-          className="bg-blue-600 text-white px-5 py-2 mx-auto block hover:opacity-50 rounded"
+          className="bg-blue-600 text-white px-5 py-1 mx-auto block hover:opacity-50 rounded"
         >
-          Submit
+          Create
+        </button>
+      </form>
+      <hr className="my-3" />
+      <h1 className="mb-3 text-center text-lg font-bold text-cyan-500">
+        Delete Post
+      </h1>
+      <form action={deletePost}>
+        <input type="text" name="id" placeholder="Post Id" className={style} />
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-5 py-1 mx-auto block hover:opacity-50 rounded"
+        >
+          Delete
         </button>
       </form>
     </section>

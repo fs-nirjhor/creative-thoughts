@@ -9,7 +9,7 @@ const NavigationTest = () => {
   const btnStyle = "px-2 border border-foreground rounded hover:opacity-50";
   return (
     <main>
-      <div className="flex gap-5 justify-center mt-5">
+      <div className="flex flex-wrap gap-5 justify-center mt-5">
         <Link href="/blog" prefetch={false} className={btnStyle}>
           Link Blog
         </Link>
