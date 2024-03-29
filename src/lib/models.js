@@ -18,7 +18,7 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    password: { type: String, required: true, min: 6, max: 32, trim: true },
+    password: { type: String, min: 6, max: 32, trim: true },
     image: { type: String, default: "", trim: true },
     isAdmin: { type: Boolean, default: false },
   },
@@ -47,5 +47,5 @@ const postSchema = new Schema(
   { timestamps: true }
 );
 
-export const User = models.User || model("User", userSchema);
-export const Post = models.Post || model("Post", postSchema);
+export const User = models?.User || model("User", userSchema);
+export const Post = models?.Post || model("Post", postSchema);
