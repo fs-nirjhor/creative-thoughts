@@ -1,6 +1,7 @@
 import NavLinks from "@/components/navbar/NavLinks";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
+import { Suspense } from "react";
 
 const Navbar = async () => {
   const session = await auth();
@@ -13,7 +14,9 @@ const Navbar = async () => {
       <Link href="/" className="text-xl font-bold">
         FSN
       </Link>
+      <Suspense fallback={<div>Loading...</div>}>
       <NavLinks className="relative" isSession={!!session} isAdmin={isAdmin} />
+      </Suspense>
     </header>
   );
 };
