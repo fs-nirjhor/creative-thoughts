@@ -5,14 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import menu from "@/../public/menu.png";
+import Logout from "@/components/logout/Logout";
 
-const NavLinks = () => {
+const NavLinks = ({ isSession, isAdmin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
-  //! Temporary
-  const isSession = true;
-  const isAdmin = true;
 
   // conditional nav links
   const links = [
@@ -28,7 +25,6 @@ const NavLinks = () => {
   if (!isSession) {
     links.push({ title: "Login", path: "/login" });
   }
-  // styles
 
   return (
     <section>
@@ -45,14 +41,7 @@ const NavLinks = () => {
             {link.title}
           </Link>
         ))}
-        {isSession && (
-          <Link
-            href="/logout"
-            className="rounded-md px-2 py-1 bg-foreground text-background"
-          >
-            Logout
-          </Link>
-        )}
+        {isSession && <Logout />}
       </nav>
       {/* mobile display nav */}
       <div className="absolute top-3 right-0 flex xl:hidden flex-col justify-center gap-3">
@@ -76,15 +65,7 @@ const NavLinks = () => {
                 {link.title}
               </Link>
             ))}
-            {isSession && (
-              <Link
-                href="/logout"
-                className="rounded-md px-2 py-1 bg-foreground text-background"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                Logout
-              </Link>
-            )}
+            {isSession && <Logout />}
           </nav>
         )}
       </div>

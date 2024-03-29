@@ -1,9 +1,10 @@
 "use server";
 
-import { Post } from "@/lib/models";
-import { connectToDb } from "@/lib/utils";
+//import { Post } from "@/lib/models";
+//import { connectToDb } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import { baseUrl } from "@/lib/secret";
+import { signIn, signOut } from "@/lib/auth";
 
 // post action
 export const createPost = async (formData) => {
@@ -35,4 +36,12 @@ export const deletePost = async (formData) => {
   } catch (error) {
     throw new Error(error);
   }
+};
+
+export const handleLoginWithGithub = async () => {
+  await signIn("github");
+};
+
+export const handleLogout = async () => {
+  await signOut();
 };
