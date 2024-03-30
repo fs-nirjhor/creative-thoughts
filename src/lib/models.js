@@ -18,7 +18,7 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    password: { type: String, min: 6, max: 32, trim: true },
+    password: { type: String, trim: true },
     image: { type: String, default: "", trim: true },
     isAdmin: { type: Boolean, default: false },
   },

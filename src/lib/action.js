@@ -20,7 +20,7 @@ export const createPost = async (formData) => {
     // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 
@@ -35,7 +35,7 @@ export const deletePost = async (formData) => {
     // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 
@@ -47,21 +47,19 @@ export const handleLogout = async () => {
   await signOut();
 };
 
-export const handleRegistration = async (formData) => {
+export const handleRegistration = async (prevState, formData) => {
   try {
     const data = Object.fromEntries(formData);
     const { username, email, password, confirmPassword } = data;
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
-      return "Passwords do not match";
+      return { error: "Passwords do not match" };
     }
     await connectToDb();
     const user = await User.findOne({
       $or: [{ email: email }, { username: username }],
     });
     if (user) {
-      console.log("User already exists");
-      return "User already exists";
+      return { error: "User already exists" };
     }
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     const newUser = await User.create({
@@ -69,7 +67,14 @@ export const handleRegistration = async (formData) => {
       email,
       password: hashedPassword,
     });
+    return { data: newUser };
   } catch (error) {
-    throw new Error(error);
+    return { error: error.message };
   }
+};
+
+export const handleLogin = async (formData) => {
+  const data = Object.fromEntries(formData);
+  const { email, password } = data;
+  await signIn("credentials", { email, password });
 };
