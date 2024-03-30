@@ -1,10 +1,19 @@
 "use client";
 
 import { handleRegistration } from "@/lib/action";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
 
 const RegisterForm = () => {
   const [state, formAction] = useFormState(handleRegistration, undefined);
+  const router = useRouter();
+  // navigate to login page after registration
+  useEffect(() => {
+    state?.data && router.push("/login");
+  }, [state?.data, router]);
+
+  // style
   const inputClass =
     "focus:border-2 border-foreground rounded bg-slate-800 p-2 w-full";
   return (
