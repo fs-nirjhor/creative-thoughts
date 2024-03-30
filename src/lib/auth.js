@@ -12,7 +12,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const user = await User.findOne({ email: profile.email });
           if (!user) {
             const newUser = await User.create({
-              username: profile.name,
+              username: profile.login,
               email: profile.email,
               image: profile.avatar_url,
             });
