@@ -11,17 +11,15 @@ const handleSignIn = async (credentials) => {
     await connectToDb();
     const user = await User.findOne({ email });
     if (!user) {
-      console.error("No user found");
       throw new Error("No user found");
     }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      console.error("Incorrect password");
       throw new Error("Incorrect password");
     }
     return user;
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 
@@ -30,8 +28,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GitHubProvider,
     CredentialsProvider({
       async authorize(credentials) {
-        const user = await handleSignIn(credentials);
-        return user ? user : null;
+        try {
+          const res = await handleSignIn(credentials);
+          return res;
+        } catch (error) {
+          return null;
+        }
       },
     }),
   ],

@@ -1,4 +1,5 @@
-import { handleLogin, handleLoginWithGithub } from "@/lib/action";
+import LoginForm from "@/components/loginForm/LoginForm";
+import { handleLoginWithGithub } from "@/lib/action";
 import Link from "next/link";
 
 const LoginPage = () => {
@@ -12,25 +13,7 @@ const LoginPage = () => {
           Login With Github
         </button>
       </form>
-      <form action={handleLogin} className="flex flex-col gap-3">
-        <input
-          type="email"
-          name="email"
-          className={inputClass}
-          placeholder="Email Address"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          className={inputClass}
-          placeholder="Password"
-          required
-        />
-        <button className="bg-blue-700 py-2 px-3 rounded hover:opacity-50 mt-2">
-          Login
-        </button>
-      </form>
+      <LoginForm />
       <Link href="/register">Don&apos;t have an account?</Link>
     </main>
   );

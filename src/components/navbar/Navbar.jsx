@@ -5,7 +5,6 @@ import { Suspense } from "react";
 
 const Navbar = async () => {
   const session = await auth();
-
   //! Temporary
   const isAdmin = true;
 
@@ -15,7 +14,11 @@ const Navbar = async () => {
         FSN
       </Link>
       <Suspense fallback={<div>Loading...</div>}>
-      <NavLinks className="relative" isSession={!!session} isAdmin={isAdmin} />
+        <NavLinks
+          className="relative"
+          isSession={!!session}
+          isAdmin={isAdmin}
+        />
       </Suspense>
     </header>
   );

@@ -20,7 +20,7 @@ export const createPost = async (formData) => {
     // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 
@@ -35,7 +35,7 @@ export const deletePost = async (formData) => {
     // console.log(res);
     revalidatePath("/blog");
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 
@@ -67,14 +67,24 @@ export const handleRegistration = async (prevState, formData) => {
       email,
       password: hashedPassword,
     });
-    return { data: newUser };
+    return { data: newUser.toObject() };
   } catch (error) {
     return { error: error.message };
   }
 };
 
-export const handleLogin = async (formData) => {
-  const data = Object.fromEntries(formData);
-  const { email, password } = data;
-  await signIn("credentials", { email, password });
+export const handleLogin = async (prevState, formData) => {
+  try {
+    const data = Object.fromEntries(formData);
+    const { email, password } = data;
+    const res = await signIn("credentials", { email, password });
+  } catch (error) {
+    if (error.message === "NEXT_REDIRECT") {
+      throw error;
+    } else if (error.name === "CredentialsSignin") {
+      return { error: "Invalid email or password" };
+    } else {
+      return { error: error.name };
+    }
+  }
 };

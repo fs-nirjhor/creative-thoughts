@@ -1,16 +1,16 @@
 "use client";
 
-import { handleRegistration } from "@/lib/action";
+import { handleLogin } from "@/lib/action";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 
-const RegisterForm = () => {
-  const [state, formAction] = useFormState(handleRegistration, null);
+const LoginForm = () => {
+  const [state, formAction] = useFormState(handleLogin, null);
   const router = useRouter();
-  // navigate to login page after registration
+  // navigate to home page after login
   useEffect(() => {
-    state?.data && router.push("/login");
+    state?.data && router.push("/");
   }, [state?.data, router]);
 
   // style
@@ -18,13 +18,6 @@ const RegisterForm = () => {
     "focus:border-2 border-foreground rounded bg-slate-800 p-2 w-full";
   return (
     <form action={formAction} className="flex flex-col gap-3">
-      <input
-        type="text"
-        name="username"
-        className={inputClass}
-        placeholder="Username"
-        required
-      />
       <input
         type="email"
         name="email"
@@ -39,20 +32,15 @@ const RegisterForm = () => {
         placeholder="Password"
         required
       />
-      <input
-        type="password"
-        name="confirmPassword"
-        className={inputClass}
-        placeholder="Confirm password"
-        required
-      />
       {state?.error && (
-        <label className="text-red-500 text-center">{state?.error}</label>
+        <label className="text-red-500 text-center grow-0">
+          {state?.error}
+        </label>
       )}
       <button className="bg-blue-700 py-2 px-3 rounded hover:opacity-50 mt-2">
-        Register
+        Login
       </button>
     </form>
   );
 };
-export default RegisterForm;
+export default LoginForm;
