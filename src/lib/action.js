@@ -19,6 +19,7 @@ export const createPost = async (formData) => {
     //const newPost = res.json();
     // console.log(res);
     revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (error) {
     throw error;
   }
@@ -34,6 +35,18 @@ export const deletePost = async (formData) => {
     });
     // console.log(res);
     revalidatePath("/blog");
+    revalidatePath("/admin");
+  } catch (error) {
+    throw error;
+  }
+};
+export const deleteUser = async (formData) => {
+  try {
+    const id = Object.fromEntries(formData);
+    await User.findByIdAndDelete(id);
+    // console.log(res);
+    revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (error) {
     throw error;
   }
