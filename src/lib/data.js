@@ -38,6 +38,14 @@ export const getPost = async (slug) => {
   }
 };
 
+export const getUsers = async (id) => {
+  try {
+    const users = await fetch(`${baseUrl}/api/user`);
+    return users.json();
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 export const getUser = async (id) => {
   try {
     /* 

@@ -42,9 +42,8 @@ export const deletePost = async (formData) => {
 };
 export const deleteUser = async (formData) => {
   try {
-    const id = Object.fromEntries(formData);
+    const { id } = Object.fromEntries(formData);
     await User.findByIdAndDelete(id);
-    // console.log(res);
     revalidatePath("/blog");
     revalidatePath("/admin");
   } catch (error) {
