@@ -17,9 +17,7 @@ const AdminPage = async () => {
               <p>{user.username}</p>
               <p className="text-sm text-gray-400">{user.email}</p>
             </div>
-            <div>
-              <DeleteUser userId={user._id} />
-            </div>
+            <DeleteUser userId={user._id} />
           </div>
         ))}
       </section>
