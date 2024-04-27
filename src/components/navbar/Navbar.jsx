@@ -5,8 +5,7 @@ import { Suspense } from "react";
 
 const Navbar = async () => {
   const session = await auth();
-  //! Temporary
-  const isAdmin = true;
+  const isAdmin = session?.user?.isAdmin;
 
   return (
     <header className="sticky bg-transparent backdrop-blur-3xl top-0 z-50 flex justify-between gap-5 p-3 mb-3">
