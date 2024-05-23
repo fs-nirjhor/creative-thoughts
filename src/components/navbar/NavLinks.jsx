@@ -17,6 +17,7 @@ const NavLinks = ({ isSession, isAdmin }) => {
     { title: "About", path: "/about" },
     { title: "Contact", path: "/contact" },
     { title: "Blog", path: "/blog" },
+    { title: "Create New", path: "/create-post" },
     //{ title: "Test", path: "/test" }, //! temporary
   ];
   if (isAdmin) {
