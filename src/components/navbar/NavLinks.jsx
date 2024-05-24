@@ -22,9 +22,12 @@ const NavLinks = ({ isSession, isAdmin }) => {
   if (isAdmin) {
     links.push({ title: "Admin", path: "/admin" });
   }
+  if (isSession) {
+    links.push({ title: "Create New", path: "/create-post" });
+  }
+
   if (!isSession) {
     links.push({ title: "Login", path: "/login" });
-    links.push({ title: "Create New", path: "/create-post" });
   }
 
   return (
